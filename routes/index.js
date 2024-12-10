@@ -1,5 +1,5 @@
 import AppController from '../controllers/AppController';
-import UserController from '../controllers/UserController';
+import UsersController from '../controllers/UsersController';
 import AuthController from '../controllers/AuthController';
 import FilesController from '../controllers/FilesController';
 import { xTokenAuthorization, basicAuthorization } from '../middlewares/auth';
@@ -8,8 +8,8 @@ const injectRoutes = (app) => {
   app.get('/status', AppController.getStatus);
   app.get('/stats', AppController.getStats);
 
-  app.post('/users', UserController.postNew);
-  app.get('/users/me', xTokenAuthorization, UserController.getMe);
+  app.post('/users', UsersController.postNew);
+  app.get('/users/me', xTokenAuthorization, UsersController.getMe);
 
   app.get('/connect', basicAuthorization, AuthController.getConnect);
   app.get('/disconnect', xTokenAuthorization, AuthController.getDisconnect);
