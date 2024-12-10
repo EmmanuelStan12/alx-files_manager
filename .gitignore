@@ -1,0 +1,9 @@
+node_modules/
+main.js
+*/**/main.js
+*/**/*-main.js
+*/**/main_*.js
+main_*.js
+*-main.js
+*.png
+*.py
