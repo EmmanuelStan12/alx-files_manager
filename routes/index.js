@@ -20,6 +20,6 @@ const injectRoutes = (app) => {
   app.put('/files/:id/publish', xTokenAuthorization, FilesController.putPublish);
   app.put('/files/:id/unpublish', xTokenAuthorization, FilesController.putUnpublish);
   app.get('/files/:id/data', FilesController.getFile);
-}
+};
 
 export default injectRoutes;

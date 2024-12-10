@@ -1,15 +1,14 @@
-import dbClient from '../utils/db';
 import Queue from 'bull/lib/queue';
 import sha1 from 'sha1';
+import dbClient from '../utils/db';
 
 const userQueue = new Queue('email sending');
 
 export default class UserController {
   static async postNew(req, res) {
-    const email = req.body?.email;
-    const password = req.body?.password;
+    const { email, password } = req.body;
     if (!email) {
-      res.status(400).json({ error: 'Missing email'});
+      res.status(400).json({ error: 'Missing email' });
       return;
     }
     if (!password) {
@@ -28,7 +27,7 @@ export default class UserController {
     const id = result.insertedId.toString();
 
     userQueue.add({ userId: id });
-    res.status(201).json({ email, id });
+    res.status(201).json({ id, email });
   }
 
   static async getMe(req, res) {
